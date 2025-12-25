@@ -1,13 +1,49 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import LandingScreen from "@/components/LandingScreen";
+import Navigation from "@/components/Navigation";
+import HeroSection from "@/components/HeroSection";
+import WorkSection from "@/components/WorkSection";
+import EducationSection from "@/components/EducationSection";
+import SkillsSection from "@/components/SkillsSection";
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const handleEnter = () => {
+    setHasEntered(true);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <AnimatePresence mode="wait">
+        {!hasEntered && (
+          <LandingScreen onEnter={handleEnter} />
+        )}
+      </AnimatePresence>
+
+      {hasEntered && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Navigation />
+          <main>
+            <HeroSection />
+            <WorkSection />
+            <EducationSection />
+            <SkillsSection />
+            <AboutSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </motion.div>
+      )}
+    </>
   );
 };
 
