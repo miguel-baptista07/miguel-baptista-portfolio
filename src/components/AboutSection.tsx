@@ -5,15 +5,12 @@ const AboutSection = () => {
     <section id="about" className="section-padding bg-card">
       <div className="content-width">
         <motion.div
-          className="mb-12"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="mono-sm mb-2">
-            <span className="text-primary/50">06.</span> Personal
-          </p>
           <h2 className="font-serif text-3xl text-foreground md:text-4xl">
             About
           </h2>

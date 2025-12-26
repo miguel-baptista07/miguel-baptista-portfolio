@@ -20,15 +20,12 @@ const EducationSection = () => {
     <section id="education" className="section-padding bg-card">
       <div className="content-width">
         <motion.div
-          className="mb-12"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="mono-sm mb-2">
-            <span className="text-primary/50">04.</span> Background
-          </p>
           <h2 className="font-serif text-3xl text-foreground md:text-4xl">
             Education
           </h2>
