@@ -21,19 +21,22 @@ const Navigation = () => {
       transition={{ duration: 0.6, delay: 0.3 }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-12">
-        <a href="#" className="mono-sm text-foreground hover:text-primary transition-colors">
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="mono-sm text-foreground hover:text-primary transition-colors relative group cursor-pointer"
+        >
           MB_
-        </a>
+          <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+        </button>
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-8 md:flex">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 className="mono-sm link-hover text-muted-foreground hover:text-foreground transition-colors"
               >
-                <span className="text-primary/50 mr-1">0{index + 1}.</span>
                 {item.label}
               </a>
             </li>
