@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Github, Linkedin, Send } from "lucide-react";
+import { Github, Linkedin, Send, Mail, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
+
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // Replace with your Web3Forms access key
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -14,13 +16,35 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission - in production, connect to a backend
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success("Message sent successfully!");
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          botcheck: "", // Honeypot for spam protection
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,10 +76,15 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p className="mb-8 text-base leading-relaxed text-muted-foreground">
-              I'm always open to discussing new opportunities, projects, or just 
-              having a conversation about technology and cybersecurity.
-            </p>
+            <div className="mb-8 flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border text-muted-foreground">
+                <MessageSquare size={18} />
+              </div>
+              <p className="text-base leading-relaxed text-muted-foreground">
+                I'm always open to discussing new opportunities, projects, or just 
+                having a conversation about technology and cybersecurity.
+              </p>
+            </div>
 
             <div className="flex gap-4">
               <a
@@ -77,6 +106,14 @@ const ContactSection = () => {
               >
                 <Linkedin size={18} />
               </a>
+
+              <a
+                href="mailto:contact@example.com"
+                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+                aria-label="Email"
+              >
+                <Mail size={18} />
+              </a>
             </div>
           </motion.div>
 
@@ -88,6 +125,9 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
+            {/* Honeypot field for spam protection - hidden from users */}
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
             <div>
               <label htmlFor="name" className="block font-mono text-xs uppercase tracking-wider text-muted-foreground mb-2">
                 Name

@@ -31,12 +31,13 @@ const Navigation = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 className="mono-sm link-hover text-muted-foreground hover:text-foreground transition-colors"
               >
+                <span className="text-primary/50 mr-1">0{index + 1}.</span>
                 {item.label}
               </a>
             </li>

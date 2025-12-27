@@ -1,21 +1,26 @@
 import { motion } from "framer-motion";
+import { Code, Lightbulb, Gamepad2, Target } from "lucide-react";
 
 const expertise = [
   {
     title: "Programming Languages",
     description: "Kotlin, Java, C, Python — building strong foundations across different paradigms and use cases.",
+    icon: Code,
   },
   {
     title: "Problem Solving",
     description: "Algorithmic thinking and systematic debugging. Breaking down complex problems into manageable solutions.",
+    icon: Lightbulb,
   },
   {
     title: "Game Logic & AI",
     description: "Designing strategic AI opponents and implementing win-detection algorithms in console-based games.",
+    icon: Gamepad2,
   },
   {
     title: "Physics Simulation",
     description: "Mathematical modeling of real-world phenomena. Trajectory calculations and visualization of projectile motion.",
+    icon: Target,
   },
 ];
 
@@ -45,6 +50,9 @@ const SkillsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
+              <div className="mb-4 flex h-10 w-10 items-center justify-center border border-border text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary/70">
+                <item.icon size={18} />
+              </div>
               <h3 className="mb-3 font-serif text-lg text-foreground">
                 {item.title}
               </h3>
