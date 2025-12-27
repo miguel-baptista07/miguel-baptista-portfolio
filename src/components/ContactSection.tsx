@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Github, Linkedin, Send, Mail, MessageSquare } from "lucide-react";
+import { Github, Linkedin, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // Replace with your Web3Forms access key
@@ -28,7 +28,7 @@ const ContactSection = () => {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          botcheck: "", // Honeypot for spam protection
+          botcheck: "",
         }),
       });
 
@@ -55,7 +55,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding bg-card">
       <div className="content-width">
         <motion.div
           className="mb-16"
@@ -65,7 +65,7 @@ const ContactSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            Get in Touch
+            Contact
           </h2>
         </motion.div>
 
@@ -76,19 +76,14 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="mb-8 flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border text-muted-foreground">
-                <MessageSquare size={18} />
-              </div>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                I'm always open to discussing new opportunities, projects, or just 
-                having a conversation about technology and cybersecurity.
-              </p>
-            </div>
+            <p className="text-base leading-relaxed text-muted-foreground mb-8 max-w-md">
+              Open to discussing opportunities, collaborations, or just connecting 
+              about software development and engineering.
+            </p>
 
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/miguel-baptista-a22405192"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
@@ -106,14 +101,6 @@ const ContactSection = () => {
               >
                 <Linkedin size={18} />
               </a>
-
-              <a
-                href="mailto:contact@example.com"
-                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
             </div>
           </motion.div>
 
@@ -125,7 +112,6 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {/* Honeypot field for spam protection - hidden from users */}
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
             <div>

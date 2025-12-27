@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 
 const ScrollIndicator = () => {
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 200], [1, 0]);
+  const opacity = useTransform(scrollY, [0, 150], [1, 0]);
 
   const handleClick = () => {
     const workSection = document.getElementById("work");
@@ -14,28 +14,30 @@ const ScrollIndicator = () => {
 
   return (
     <motion.div
-      className="absolute bottom-12 left-1/2 -translate-x-1/2"
+      className="absolute bottom-16 left-1/2 -translate-x-1/2"
       style={{ opacity }}
     >
       <motion.button
         onClick={handleClick}
-        className="group flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        className="flex flex-col items-center gap-2 cursor-pointer group"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
         aria-label="Scroll to next section"
       >
         <motion.div
-          animate={{ y: [0, 3, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ 
-            duration: 1.5, 
+            duration: 2, 
             repeat: Infinity, 
             ease: "easeInOut" 
           }}
         >
-          <ChevronDown size={18} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+          <ChevronDown 
+            size={20} 
+            className="text-muted-foreground/50 group-hover:text-foreground/70 transition-colors duration-300" 
+            strokeWidth={1}
+          />
         </motion.div>
       </motion.button>
     </motion.div>

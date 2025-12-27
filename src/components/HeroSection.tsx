@@ -29,8 +29,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          Building strong foundations in software development with a focus on 
-          problem-solving, technical rigor, and cybersecurity. Based in Portugal.
+          Focused on building strong technical foundations through disciplined 
+          problem-solving and an engineering mindset. Developing expertise in 
+          software development, frontend systems, and object-oriented design.
         </motion.p>
       </div>
 

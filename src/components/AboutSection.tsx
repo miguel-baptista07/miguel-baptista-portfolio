@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding bg-card">
+    <section id="about" className="section-padding">
       <div className="content-width">
         <motion.div
           className="mb-16"
@@ -24,20 +24,20 @@ const AboutSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-base leading-relaxed text-secondary-foreground md:text-lg">
-            I'm a first-year Computer Engineering student at Universidade Lusófona, 
-            based in Carcavelos, Portugal. My focus is on building a strong technical 
-            foundation while exploring my interest in cybersecurity.
+            I approach learning and work with the same discipline I developed 
+            playing handball for years—understanding when to push forward and 
+            when to support the team.
           </p>
           
           <p className="text-base leading-relaxed text-muted-foreground">
-            With determination and focus, I'm ready to take on technical challenges. 
-            My goal is to develop solid skills throughout my academic career and pursue 
-            a specialized path in Cybersecurity after completing my degree.
+            Currently building a strong foundation in software engineering, with 
+            a focus on understanding systems deeply rather than just making things 
+            work. I believe in writing code that others can read and maintain.
           </p>
           
           <p className="text-base leading-relaxed text-muted-foreground">
-            Outside of coding, my years in handball have shaped my approach to 
-            teamwork and problem-solving—knowing when to lead and when to support.
+            Based in Portugal, I'm committed to long-term growth in this field—taking 
+            the time to learn properly, one concept at a time.
           </p>
         </motion.div>
       </div>

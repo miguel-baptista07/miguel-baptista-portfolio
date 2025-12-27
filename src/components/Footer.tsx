@@ -1,17 +1,25 @@
+import { motion } from "framer-motion";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer className="border-t border-border px-6 py-8 md:px-12">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 md:flex-row">
-        <p className="font-mono text-xs text-muted-foreground">
+    <motion.footer
+      className="border-t border-border px-6 py-8 md:px-12 lg:px-24"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="font-mono text-xs text-muted-foreground/60">
           © {currentYear} Miguel Baptista
         </p>
-        <p className="font-mono text-xs text-muted-foreground/50">
-          Built with purpose
+        <p className="font-mono text-xs text-muted-foreground/40">
+          Built with discipline
         </p>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
