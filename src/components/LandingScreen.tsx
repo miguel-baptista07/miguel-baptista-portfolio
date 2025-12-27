@@ -10,27 +10,23 @@ const LandingScreen = ({ onEnter }: LandingScreenProps) => {
       className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-background"
       onClick={onEnter}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
     >
       <motion.button
-        className="font-serif text-2xl tracking-[0.3em] text-foreground/80 transition-colors duration-300 hover:text-primary md:text-3xl"
+        className="relative font-serif text-xl tracking-[0.4em] text-foreground/70 transition-all duration-500 hover:text-foreground hover:tracking-[0.5em] md:text-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.3 }}
-        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
         onClick={onEnter}
       >
         START
+        <motion.span
+          className="absolute -bottom-2 left-0 h-px w-full bg-foreground/30"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 1.2 }}
+        />
       </motion.button>
-      
-      <motion.p
-        className="absolute bottom-12 text-xs text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        click anywhere to enter
-      </motion.p>
     </motion.div>
   );
 };
