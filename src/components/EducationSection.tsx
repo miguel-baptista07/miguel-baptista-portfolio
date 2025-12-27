@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { GraduationCap, School } from "lucide-react";
 
 const education = [
   {
@@ -6,12 +7,14 @@ const education = [
     institution: "Universidade Lusófona",
     period: "2024 – Present",
     status: "Currently pursuing",
+    icon: GraduationCap,
   },
   {
     degree: "High School",
     institution: "Agrupamento de Escolas Frei Gonçalo de Azevedo",
     period: "2021 – 2024",
     status: "Completed",
+    icon: School,
   },
 ];
 
@@ -35,13 +38,16 @@ const EducationSection = () => {
           {education.map((edu, index) => (
             <motion.div
               key={edu.degree}
-              className="flex flex-col gap-1 border-l-2 border-border pl-6 md:flex-row md:items-baseline md:justify-between md:border-l-0 md:pl-0"
+              className="group flex items-start gap-4 border-l-2 border-border pl-6 transition-colors hover:border-primary/40 md:flex-row md:items-center md:justify-between md:border-l-0 md:border-b md:border-border md:pb-6 md:pl-0 md:hover:border-primary/40"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
-              <div>
+              <div className="hidden md:flex h-10 w-10 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary/70">
+                <edu.icon size={18} />
+              </div>
+              <div className="flex-1">
                 <h3 className="font-serif text-xl text-foreground">{edu.degree}</h3>
                 <p className="text-sm text-muted-foreground">{edu.institution}</p>
               </div>
