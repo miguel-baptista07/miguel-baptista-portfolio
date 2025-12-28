@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "work", href: "#work" },
+  { label: "projects", href: "#work" },
   { label: "education", href: "#education" },
-  { label: "skills", href: "#skills" },
+  { label: "expertise", href: "#expertise" },
   { label: "about", href: "#about" },
   { label: "contact", href: "#contact" },
 ];
@@ -35,9 +35,9 @@ const Navigation = () => {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="mono-sm link-hover text-muted-foreground hover:text-foreground transition-colors"
+                className="mono-sm link-hover text-muted-foreground hover:text-foreground transition-colors group"
               >
-                <span className="text-primary/50 mr-1">0{index + 1}.</span>
+                <span className="text-primary/50 mr-1 group-hover:text-primary transition-colors">0{index + 1}.</span>
                 {item.label}
               </a>
             </li>
@@ -46,7 +46,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="text-foreground md:hidden"
+          className="text-foreground md:hidden hover:text-primary transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -77,6 +77,7 @@ const Navigation = () => {
                     className="font-serif text-2xl text-foreground hover:text-primary transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
+                    <span className="text-primary/50 mr-2 text-lg">0{index + 1}.</span>
                     {item.label}
                   </a>
                 </motion.li>

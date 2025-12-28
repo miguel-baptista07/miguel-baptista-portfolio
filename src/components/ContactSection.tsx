@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Github, Linkedin, Send } from "lucide-react";
 import { toast } from "sonner";
 
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // Replace with your Web3Forms access key
-
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -18,23 +16,20 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://formspree.io/f/xyzypvnj", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          botcheck: "",
         }),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
@@ -86,17 +81,17 @@ const ContactSection = () => {
                 href="https://github.com/miguel-baptista-a22405192"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground hover:bg-primary/5"
                 aria-label="GitHub"
               >
                 <Github size={18} />
               </a>
               
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/miguel-baptista-170744355/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+                className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground hover:bg-primary/5"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
@@ -112,8 +107,6 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
             <div>
               <label htmlFor="name" className="block font-mono text-xs uppercase tracking-wider text-muted-foreground mb-2">
                 Name

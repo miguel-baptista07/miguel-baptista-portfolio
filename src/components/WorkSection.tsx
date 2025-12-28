@@ -2,6 +2,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 
+// Import images
+import javaGameImg from "@/assets/java-game.png";
+import frontendLabs1 from "@/assets/frontend-labs-1.png";
+import frontendLabs2 from "@/assets/frontend-labs-2.png";
+import frontendLabs3 from "@/assets/frontend-labs-3.png";
+import reactNextjs1 from "@/assets/react-nextjs-1.png";
+import reactNextjs2 from "@/assets/react-nextjs-2.png";
+import reactNextjs3 from "@/assets/react-nextjs-3.png";
+import reactNextjs4 from "@/assets/react-nextjs-4.png";
+import reactNextjs5 from "@/assets/react-nextjs-5.png";
+
 interface ProjectImage {
   src: string;
   alt: string;
@@ -19,6 +30,36 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "The Great Programming Journey",
+    description: "Educational board game engine developed in Java, focused on object-oriented design and game logic.",
+    bullets: [
+      "Complex OOP architecture using inheritance and polymorphism",
+      "Zero usage of instanceof (pure polymorphism)",
+      "Turn-based game logic with obstacles, tools, and persistence",
+    ],
+    tech: ["Java 17", "Object-Oriented Programming", "Game Logic"],
+    githubUrl: "https://github.com/miguel-baptista-a22405192/LP2-22405192-22408651",
+    images: [
+      { src: javaGameImg, alt: "The Great Programming Journey - Game Board" },
+    ]
+  },
+  {
+    title: "Frontend Labs Collection",
+    description: "Collection of frontend labs developed incrementally using HTML, CSS, and JavaScript, evolving towards modern frontend practices.",
+    bullets: [
+      "Dynamic data rendering",
+      "Filters, sorting, and user interaction",
+      "Clear separation of structure, style, and logic",
+    ],
+    tech: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/miguel-baptista-a22405192/miguelbaptista1.github.io",
+    images: [
+      { src: frontendLabs1, alt: "Frontend Labs - Projects Overview" },
+      { src: frontendLabs2, alt: "Frontend Labs - Interfaces Web" },
+      { src: frontendLabs3, alt: "Frontend Labs - First Web Page" },
+    ]
+  },
+  {
     title: "React & Next.js — Frontend Labs & E-Commerce Platform",
     description: "Modern web application built with React and Next.js, focused on component architecture, state management, and real-world frontend patterns.",
     bullets: [
@@ -32,44 +73,13 @@ const projects: Project[] = [
     liveUrl: "https://lab11part1.vercel.app/",
     githubUrl: "https://github.com/miguel-baptista-a22405192/diw-lab8",
     images: [
-      { src: "/placeholder.svg", alt: "E-Commerce Platform - Product Listing" },
-      { src: "/placeholder.svg", alt: "E-Commerce Platform - Product Details" },
-      { src: "/placeholder.svg", alt: "E-Commerce Platform - Shopping Cart" }
+      { src: reactNextjs1, alt: "React & Next.js - Characteristics" },
+      { src: reactNextjs2, alt: "React & Next.js - Interactive Counter" },
+      { src: reactNextjs3, alt: "React & Next.js - Countries Explorer" },
+      { src: reactNextjs4, alt: "React & Next.js - Modern Web Dev" },
+      { src: reactNextjs5, alt: "React & Next.js - Modern Interfaces" },
     ]
   },
-  {
-    title: "HTML, CSS & JavaScript — Frontend Labs Collection",
-    description: "Collection of frontend labs developed incrementally to practice web fundamentals and browser-side interactivity.",
-    bullets: [
-      "Semantic HTML structure and accessibility",
-      "Responsive layouts with CSS Flexbox and Grid",
-      "Dynamic rendering with vanilla JavaScript",
-      "Filtering and sorting of data collections",
-      "State persistence using localStorage"
-    ],
-    tech: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/miguel-baptista-a22405192/miguelbaptista1.github.io",
-    images: [
-      { src: "/placeholder.svg", alt: "Frontend Labs Collection" }
-    ]
-  },
-  {
-    title: "Java — The Great Programming Journey (OOP Game Engine)",
-    description: "Educational board game engine developed in Java 17 to apply strong Object-Oriented Programming principles in a complex rule-based system.",
-    bullets: [
-      "Turn-based board game logic with modular design",
-      "Multiple obstacle and protection systems",
-      "Pure polymorphism implementation (no instanceof)",
-      "Persistent save/load of game state",
-      "Fully validated with automated tests"
-    ],
-    tech: ["Java 17", "OOP", "Polymorphism", "File Persistence"],
-    githubUrl: "https://github.com/miguel-baptista-a22405192/LP2-22405192-22408651",
-    images: [
-      { src: "/placeholder.svg", alt: "Java Game Engine - Game Board" },
-      { src: "/placeholder.svg", alt: "Java Game Engine - Game Logic" }
-    ]
-  }
 ];
 
 interface ImageGalleryProps {
@@ -94,14 +104,14 @@ const ImageGallery = ({ images, isOpen, onClose, projectTitle }: ImageGalleryPro
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div
-            className="relative w-full max-w-4xl mx-6"
+            className="relative w-full max-w-4xl"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -126,7 +136,7 @@ const ImageGallery = ({ images, isOpen, onClose, projectTitle }: ImageGalleryPro
               <img
                 src={images[currentIndex].src}
                 alt={images[currentIndex].alt}
-                className="w-full h-auto"
+                className="w-full h-auto max-h-[70vh] object-contain bg-background"
               />
             </div>
 
@@ -135,14 +145,14 @@ const ImageGallery = ({ images, isOpen, onClose, projectTitle }: ImageGalleryPro
               <>
                 <button
                   onClick={goPrev}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border rounded-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border rounded-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
                   onClick={goNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border rounded-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border rounded-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                   aria-label="Next image"
                 >
                   <ChevronRight size={20} />
@@ -155,7 +165,7 @@ const ImageGallery = ({ images, isOpen, onClose, projectTitle }: ImageGalleryPro
                       key={index}
                       onClick={() => setCurrentIndex(index)}
                       className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
+                        index === currentIndex ? "bg-primary" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                       }`}
                       aria-label={`Go to image ${index + 1}`}
                     />
@@ -185,7 +195,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Image */}
           <div 
-            className="relative overflow-hidden rounded-sm border border-primary/30 cursor-pointer"
+            className="relative overflow-hidden rounded-sm border border-primary/30 cursor-pointer transition-all duration-300 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5"
             onClick={() => setGalleryOpen(true)}
           >
             <img
@@ -194,7 +204,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             />
             {project.images.length > 1 && (
-              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-background/80 backdrop-blur-sm border border-border px-3 py-1.5 rounded-sm">
+              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-background/80 backdrop-blur-sm border border-border px-3 py-1.5 rounded-sm transition-colors group-hover:border-primary/30">
                 <Images size={14} className="text-muted-foreground" />
                 <span className="font-mono text-xs text-muted-foreground">{project.images.length}</span>
               </div>
@@ -203,7 +213,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           
           {/* Content */}
           <div className="flex flex-col justify-center">
-            <h3 className="font-serif text-xl text-foreground md:text-2xl mb-4">
+            <h3 className="font-serif text-xl text-foreground md:text-2xl mb-4 transition-colors group-hover:text-primary">
               {project.title}
             </h3>
             
@@ -224,7 +234,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="font-mono text-xs text-muted-foreground border border-border px-3 py-1"
+                  className="font-mono text-xs text-muted-foreground border border-border px-3 py-1 transition-colors hover:border-primary/30"
                 >
                   {t}
                 </span>
@@ -238,7 +248,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs text-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary hover:text-primary"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary hover:text-primary hover:bg-primary/5"
                 >
                   Live Demo
                   <ExternalLink size={12} />
@@ -249,7 +259,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs text-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary hover:text-primary"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary hover:text-primary hover:bg-primary/5"
                 >
                   GitHub
                   <Github size={12} />
@@ -258,7 +268,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               {project.images.length > 1 && (
                 <button
                   onClick={() => setGalleryOpen(true)}
-                  className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary/50 hover:text-foreground"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground border border-border px-4 py-2 transition-all duration-300 hover:border-primary/50 hover:text-foreground hover:bg-primary/5"
                 >
                   View Gallery
                   <Images size={12} />
