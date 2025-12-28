@@ -3,7 +3,7 @@ import ScrollIndicator from "./ScrollIndicator";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen flex-col justify-center section-padding pt-32">
+    <section id="hero" className="relative flex min-h-screen flex-col justify-center section-padding pt-32">
       <div className="content-width">
         <motion.p
           className="mono-sm mb-4"

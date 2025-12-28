@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "home", href: "#hero" },
   { label: "projects", href: "#work" },
   { label: "education", href: "#education" },
   { label: "expertise", href: "#expertise" },
@@ -13,6 +14,10 @@ const navItems = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <motion.header
       className="fixed left-0 right-0 top-0 z-40 bg-background/80 backdrop-blur-sm"
@@ -22,7 +27,7 @@ const Navigation = () => {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-12">
         <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={handleRefresh}
           className="mono-sm text-foreground hover:text-primary transition-colors relative group cursor-pointer"
         >
           MB_
