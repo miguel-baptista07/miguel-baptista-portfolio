@@ -54,9 +54,9 @@ const projects: Project[] = [
     tech: ["HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/miguel-baptista-a22405192/miguelbaptista1.github.io",
     images: [
+      { src: frontendLabs3, alt: "Frontend Labs - First Web Page" },
       { src: frontendLabs1, alt: "Frontend Labs - Projects Overview" },
       { src: frontendLabs2, alt: "Frontend Labs - Interfaces Web" },
-      { src: frontendLabs3, alt: "Frontend Labs - First Web Page" },
     ]
   },
   {
@@ -73,11 +73,11 @@ const projects: Project[] = [
     liveUrl: "https://lab11part1.vercel.app/",
     githubUrl: "https://github.com/miguel-baptista-a22405192/diw-lab8",
     images: [
+      { src: reactNextjs5, alt: "React & Next.js - Modern Interfaces" },
+      { src: reactNextjs4, alt: "React & Next.js - Modern Web Dev" },
       { src: reactNextjs1, alt: "React & Next.js - Characteristics" },
       { src: reactNextjs2, alt: "React & Next.js - Interactive Counter" },
       { src: reactNextjs3, alt: "React & Next.js - Countries Explorer" },
-      { src: reactNextjs4, alt: "React & Next.js - Modern Web Dev" },
-      { src: reactNextjs5, alt: "React & Next.js - Modern Interfaces" },
     ]
   },
 ];
