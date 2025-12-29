@@ -132,12 +132,12 @@ const ImageGallery = ({ images, isOpen, onClose, projectTitle }: ImageGalleryPro
             </p>
 
             {/* Image container */}
-            <div className="relative overflow-hidden rounded-sm border border-primary/40">
+            <div className="relative overflow-hidden rounded-sm border border-primary/30">
               <img
                 src={images[currentIndex].src}
                 alt={images[currentIndex].alt}
                 loading="lazy"
-                className="w-full h-auto max-h-[70vh] object-cover bg-background"
+                className="w-full h-auto max-h-[70vh] object-contain bg-background"
               />
             </div>
 
@@ -196,13 +196,13 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Image */}
         <div 
-          className="relative overflow-hidden rounded-sm border border-primary/40 cursor-pointer transition-all duration-300 hover:border-primary hover:-translate-y-1"
+          className="relative overflow-hidden rounded-sm border border-primary/30 cursor-pointer transition-all duration-300 hover:border-primary hover:-translate-y-1"
           onClick={() => setGalleryOpen(true)}
         >
           <img
             src={project.images[0].src}
             alt={project.images[0].alt}
-            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
           />
             {project.images.length > 1 && (
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-background/80 backdrop-blur-sm border border-border px-3 py-1.5 rounded-sm transition-colors group-hover:border-primary/30">

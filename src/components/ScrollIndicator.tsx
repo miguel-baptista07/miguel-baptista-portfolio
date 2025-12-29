@@ -26,7 +26,7 @@ const ScrollIndicator = () => {
         aria-label="Scroll to next section"
       >
         <motion.div
-          className="p-2 rounded-full border border-foreground/60 group-hover:border-primary/80 transition-colors duration-300"
+          className="p-2 rounded-full border border-white/70 group-hover:border-white transition-colors duration-300"
           animate={{ y: [0, 4, 0] }}
           transition={{ 
             duration: 2, 
@@ -36,7 +36,7 @@ const ScrollIndicator = () => {
         >
           <ChevronDown 
             size={18} 
-            className="text-primary group-hover:text-primary/80 transition-colors duration-300" 
+            className="text-primary brightness-125 group-hover:brightness-150 transition-all duration-300" 
             strokeWidth={2.5}
           />
         </motion.div>
