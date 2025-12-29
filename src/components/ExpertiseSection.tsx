@@ -41,7 +41,7 @@ const ExpertiseSection = () => {
             return (
               <motion.div
                 key={item.title}
-                className="group p-6 border border-border/50 transition-all duration-300 hover:border-primary/30 hover:bg-card/50"
+                className="group p-6 border border-border/50 transition-all duration-300 hover:border-primary/30 hover:bg-card/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

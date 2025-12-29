@@ -18,6 +18,16 @@ const Navigation = () => {
     window.location.reload();
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.header
       className="fixed left-0 right-0 top-0 z-40 bg-background/80 backdrop-blur-sm"
@@ -40,6 +50,7 @@ const Navigation = () => {
             <li key={item.label}>
               <a
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="mono-sm link-hover text-muted-foreground hover:text-foreground transition-colors group"
               >
                 <span className="text-primary/50 mr-1 group-hover:text-primary transition-colors">0{index + 1}.</span>
@@ -51,7 +62,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="text-foreground md:hidden hover:text-primary transition-colors"
+          className="text-foreground md:hidden hover:text-primary transition-colors z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -63,13 +74,14 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 top-16 z-30 bg-background md:hidden"
+            className="fixed inset-0 top-0 z-40 bg-background md:hidden flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ul className="flex flex-col items-center gap-8 pt-20">
+            <div className="h-20" /> {/* Spacer for header */}
+            <ul className="flex flex-col items-center justify-center flex-1 gap-8">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item.label}
@@ -80,7 +92,7 @@ const Navigation = () => {
                   <a
                     href={item.href}
                     className="font-serif text-2xl text-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     <span className="text-primary/50 mr-2 text-lg">0{index + 1}.</span>
                     {item.label}

@@ -26,7 +26,9 @@ const AboutSection = () => {
           <p className="text-base leading-relaxed text-secondary-foreground md:text-lg">
             I approach learning and work with the same discipline I developed 
             playing handball for years—understanding when to push forward and 
-            when to support the team.
+            when to support the team. As team captain, I've learned to stay calm 
+            under pressure, make decisions in high-stress situations, and transmit 
+            calm and confidence to my teammates.
           </p>
           
           <p className="text-base leading-relaxed text-muted-foreground">
@@ -37,7 +39,9 @@ const AboutSection = () => {
           
           <p className="text-base leading-relaxed text-muted-foreground">
             Based in Portugal, I'm committed to long-term growth in this field—taking 
-            the time to learn properly, one concept at a time.
+            the time to learn properly, one concept at a time. Looking ahead, I aim to 
+            specialize in cybersecurity while continuing to deepen my expertise in 
+            frontend engineering and AI.
           </p>
         </motion.div>
       </div>
