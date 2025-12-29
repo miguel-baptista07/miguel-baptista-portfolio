@@ -30,8 +30,10 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           Focused on building strong technical foundations through disciplined 
-          problem-solving and an engineering mindset. Developing expertise in 
-          software development, frontend systems, and object-oriented design.
+          problem-solving and an engineering mindset. Developing expertise in{" "}
+          <strong className="text-foreground font-medium">software development</strong>,{" "}
+          <strong className="text-foreground font-medium">frontend systems</strong>, and{" "}
+          <strong className="text-foreground font-medium">object-oriented design</strong>.
         </motion.p>
       </div>
 
