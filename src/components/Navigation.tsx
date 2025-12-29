@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "home", href: "#hero" },
-  { label: "projects", href: "#work" },
-  { label: "education", href: "#education" },
-  { label: "expertise", href: "#expertise" },
-  { label: "about", href: "#about" },
-  { label: "contact", href: "#contact" },
+  { label: "Home", href: "#hero" },
+  { label: "Projects", href: "#work" },
+  { label: "Education", href: "#education" },
+  { label: "Expertise", href: "#expertise" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navigation = () => {
@@ -74,27 +74,37 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 top-0 z-40 bg-background md:hidden flex flex-col"
+            className="fixed inset-0 z-50 bg-background/98 backdrop-blur-sm md:hidden flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="h-20" /> {/* Spacer for header */}
+            {/* Close button - fixed position */}
+            <div className="absolute top-6 right-6">
+              <button
+                className="text-foreground hover:text-primary transition-colors p-2"
+                onClick={() => setIsOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
             <ul className="flex flex-col items-center justify-center flex-1 gap-8">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.05 }}
                 >
                   <a
                     href={item.href}
                     className="font-serif text-2xl text-foreground hover:text-primary transition-colors"
                     onClick={(e) => handleNavClick(e, item.href)}
                   >
-                    <span className="text-primary/50 mr-2 text-lg">0{index + 1}.</span>
+                    <span className="text-primary/60 mr-2 text-lg font-mono">0{index + 1}.</span>
                     {item.label}
                   </a>
                 </motion.li>

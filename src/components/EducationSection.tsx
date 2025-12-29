@@ -46,15 +46,17 @@ const EducationSection = () => {
                 <h3 className="font-serif text-lg text-foreground mb-1 transition-colors group-hover:text-primary">
                   {edu.degree}
                 </h3>
-                <a
-                  href={edu.institutionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {edu.institution}
-                  <ExternalLink size={12} className="opacity-50" />
-                </a>
+                <span className="text-sm text-muted-foreground">
+                  <a
+                    href={edu.institutionUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 transition-colors"
+                  >
+                    {edu.institution}
+                    <ExternalLink size={12} className="opacity-60" />
+                  </a>
+                </span>
               </div>
               <p className="font-mono text-xs text-muted-foreground/70 whitespace-nowrap">
                 {edu.period}
