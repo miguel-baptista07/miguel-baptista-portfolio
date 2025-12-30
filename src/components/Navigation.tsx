@@ -70,18 +70,19 @@ const Navigation = () => {
         </button>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Full screen overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 bg-background/98 backdrop-blur-sm md:hidden flex flex-col"
+            className="fixed inset-0 w-screen h-screen z-[9999] bg-background md:hidden flex flex-col overflow-hidden"
+            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
             {/* Close button - fixed position */}
-            <div className="absolute top-6 right-6">
+            <div className="absolute top-6 right-6 z-[10000]">
               <button
                 className="text-foreground hover:text-primary transition-colors p-2"
                 onClick={() => setIsOpen(false)}
@@ -91,7 +92,7 @@ const Navigation = () => {
               </button>
             </div>
             
-            <ul className="flex flex-col items-center justify-center flex-1 gap-8">
+            <ul className="flex flex-col items-center justify-center flex-1 gap-8 w-full h-full">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item.label}
