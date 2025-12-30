@@ -43,7 +43,7 @@ const EducationSection = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <div className="flex-1">
-                <h3 className="font-serif text-lg text-foreground mb-1 transition-colors group-hover:text-primary">
+                <h3 className="font-serif text-lg text-foreground mb-1">
                   {edu.degree}
                 </h3>
                 <p className="text-sm text-foreground">
