@@ -46,15 +46,15 @@ const EducationSection = () => {
                 <h3 className="font-serif text-lg text-foreground mb-1">
                   {edu.degree}
                 </h3>
-                <p className="text-sm text-foreground">
-                  {edu.institution}
+                <p className="text-sm">
                   <a
                     href={edu.institutionUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 ml-2 text-primary hover:text-primary/80 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors cursor-pointer"
                   >
-                    <ExternalLink size={12} />
+                    {edu.institution}
+                    <ExternalLink size={12} className="opacity-60" />
                   </a>
                 </p>
               </div>
